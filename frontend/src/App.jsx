@@ -1,7 +1,19 @@
 import './App.css'
+import { useEffect } from 'react'
 import io from "socket.io-client"
-const socketIO = io.connect("http://localhost:3000")
+
+const socket = io.connect("http://localhost:3000")
+
 function App() {
+  const sendMessage = () => {
+    socket.emit("send_message", { message: "HI hello world" })
+  }
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      alert(data.message)
+    })
+  }, [socket])
 
   return (
     <>
@@ -16,7 +28,7 @@ function App() {
         type="text"
         placeholder='RandomWord' />
 
-      <button className='btn'>submit</button>
+      <button onClick={() => sendMessage()} className='btn'>submit</button>
 
     </>
   )

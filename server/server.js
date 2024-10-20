@@ -17,14 +17,18 @@ const io = new Server(server, {
   },
 });
 
-app.get("/", (req, res) => {
-  res.sendFile("/frontend/index.html", { root: ".." });
-});
+// app.get("/", (req, res) => {
+//   res.sendFile("/frontend/index.html", { root: ".." });
+// });
 
 io.on("connection", (socket) => {
-  console.log("a user connected");
+  console.log(`${socket.id}a user connected`);
+  socket.on("send_message", (data) => {
+    console.log(data);
+    socket.broadcast.emit("receive_message", data);
+  });
   socket.on("disconnect", () => {
-    console.log("a user disconnected");
+    console.log(`${socket.id} user disconnected`);
   });
 });
 
