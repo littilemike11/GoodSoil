@@ -11,12 +11,14 @@ import {
   Route
 }
   from "react-router-dom"
+import SameBrainPage from './pages/SameBrainPage.jsx'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<LandingPage />}></Route>
+      <Route path='sameBrain' element={<SameBrainPage />}></Route>
     </Route>
 
   )

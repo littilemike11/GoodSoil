@@ -6,6 +6,7 @@ export default function LandingPage() {
                 <GameCard
                     Title="Same Brain"
                     Description=" How in Sync are you and your partner?"
+                    Link="/sameBrain"
                 />
                 <GameCard
                     Title="Band Wagon"

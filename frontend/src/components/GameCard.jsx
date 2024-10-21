@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 export default function GameCard(props) {
     return (
         <>
@@ -12,7 +13,10 @@ export default function GameCard(props) {
                     <h2 className="card-title">{props.Title}</h2>
                     <p>{props.Description}</p>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Play Now</button>
+                        <Link to={props.Link}>
+                            <button className="btn btn-primary">Play Now</button>
+
+                        </Link>
                     </div>
                 </div>
             </div>
